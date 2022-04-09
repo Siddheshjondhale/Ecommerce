@@ -29,18 +29,16 @@ List
 						<div class="col-md-8 col-lg-6">
 								<div class="header">
 										<h3>Featured Products</h3>
-										<h2>Womens Products</h2>
+										<h2>Mens Products</h2>
 								</div>
 						</div>
 				</div>
 
-      
-
 	<h3 class="my-4 border-bottom pb-1"><span class="text-muted">Search result for</span> {{request.GET.q}}</h3>
-  
     <div class="row">
 	 {% for i in data  %}
-   {% if i.category == "Womens" %}
+   {% if i.category == "Kids"%}
+
       <div class="col-md-3 ">
         <div class="product-container">
           <!-- <div class="tag-sale">
@@ -48,7 +46,7 @@ List
           </div> -->
           <div class="product-image">
             <span class="hover-link"></span>
-            <a href="/womens/detail/{{i.id}}" class="product-link">view details</a>
+            <a href="/mens/detail/{{i.id}}" class="product-link">view details</a>
             <img class="img-responsive" src="/media/{{i.image}}" alt="">
           </div>
           <div class="product-description">
@@ -78,12 +76,11 @@ List
           </div>
         </div>
       </div>
-  {%else%}
+      {%else%}
 {% comment %} <h1>siddhesh</h1> {% endcomment %}
 {% endif %}
 
    	 {% endfor %} 
-      </div>
 
 </section>
 
@@ -98,10 +95,7 @@ const add_to_cart =(id,name)=>{
 
   var cart = JSON.parse(localStorage.getItem("cart"))
 
-
- 
-  //id=id+50;
- 
+  
   if (cart) {
     if (cart[id]) {
       cart[id] = { name: name, value: cart[id].value + 1 };
@@ -111,9 +105,8 @@ const add_to_cart =(id,name)=>{
     }
   } else {
     cart = { [id]: { name: name, value: 1 } };
+
   }
-
-
 
 localStorage.setItem("cart",JSON.stringify(cart))
 
@@ -122,6 +115,7 @@ localStorage.setItem("cart",JSON.stringify(cart))
 var value = JSON.parse(localStorage.getItem("cart"));
 
 document.getElementById("cartId").innerHTML = Object.keys(value).length
+
 }
 
 
@@ -151,7 +145,6 @@ document.getElementById("cartId").innerHTML = Object.keys(value).length
 
 
 
-    {% comment %} Test {% endcomment %}
 
 
 

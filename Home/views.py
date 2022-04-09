@@ -303,12 +303,17 @@ def Contactsubmit(request):
 def search(request):
 	q=request.GET['q']
 	data=mensboy.objects.filter(title=q).order_by('-id')
-	return render(request,'homepage/search.html',{'data':data})
+	return render(request,'homepage/searchmens.html',{'data':data})
 
 
 def searchwomens(request):
 	q=request.GET['q']
 	data=mensboy.objects.filter(title=q).order_by('-id')
 	return render(request,'homepage/searchwomens.html',{'data':data})
+
+def searchkids(request):
+	q=request.GET['q']
+	data=mensboy.objects.filter(title=q).order_by('-id')
+	return render(request,'homepage/searchkids.html',{'data':data})
 
 # search bar code ends

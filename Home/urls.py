@@ -39,5 +39,6 @@ urlpatterns = [
     # search bar
     path('search',views.search,name='search'),
     path('searchwomens',views.searchwomens,name='search'),
+    path('searchkids',views.searchkids,name='search'),
   
 ]
