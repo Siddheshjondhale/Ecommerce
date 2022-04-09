@@ -35,5 +35,9 @@ urlpatterns = [
 
     # logout 
     path('logout/',views.logoutkaro),
+
+    # search bar
+    path('search',views.search,name='search'),
+    path('searchwomens',views.searchwomens,name='search'),
   
 ]

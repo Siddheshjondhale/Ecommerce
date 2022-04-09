@@ -298,4 +298,17 @@ def Contactsubmit(request):
     newContact.save()
     return HttpResponse("<h1>thanks for the response</h1><a href='/shop'><button style='background-color: #0275d8; color:white; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;'>Click here to shop</button></a>")
     
-# Ttemp code
+# search bar code starts
+# Search
+def search(request):
+	q=request.GET['q']
+	data=mensboy.objects.filter(title=q).order_by('-id')
+	return render(request,'homepage/search.html',{'data':data})
+
+
+def searchwomens(request):
+	q=request.GET['q']
+	data=mensboy.objects.filter(title=q).order_by('-id')
+	return render(request,'homepage/searchwomens.html',{'data':data})
+
+# search bar code ends
