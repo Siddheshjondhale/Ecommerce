@@ -1,0 +1,156 @@
+{% extends "homepage\basic.html" %}
+
+{% load static %}
+
+{% block title %}
+List
+{% endblock title %}
+
+
+{% block head %}
+ 
+   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" href="{% static 'css/mens.css' %}">
+
+{% endblock head %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+
+
+
+{% comment %} Products started  {% endcomment %}
+<section class="section-products">
+<div class="container">
+				<div class="row justify-content-center text-center">
+						<div class="col-md-8 col-lg-6">
+								<div class="header">
+										<h3>Featured Products</h3>
+										<h2>Accessories Products</h2>
+								</div>
+						</div>
+				</div>
+
+
+    <div class="row">
+	 {% for i in data  %}
+   {% if i.category == "Accessories" %}
+
+      <div class="col-md-3 ">
+        <div class="product-container">
+          <!-- <div class="tag-sale">
+
+          </div> -->
+          <div class="product-image">
+            <span class="hover-link"></span>
+            <a href="/accessories/detail/{{i.id}}" class="product-link">view details</a>
+            <img class="img-responsive" src="/media/{{i.image}}" alt="">
+          </div>
+          <div class="product-description">
+            <div class="product-label">
+              <div class="product-name">
+                <h1>{{i.title}}</h1>
+                <p class="price">{{i.price}}</p>
+                <p>Men's running shirt</p>
+              </div>
+            </div>
+			
+            <div class="product-option">
+              <div class="product-size">
+                <h3>Sizes</h3>
+                <p>XS,S,M,L,XL,XXL</p>
+              </div>
+              <div class="product-color">
+                <button class="btn btn-sm btn-dark" onclick="add_to_cart('{{i.id}}','{{i.title}}')">Add to Cart</button>
+					<!-- <ul>
+						<li>
+							{{i.percentage_sale}}
+						</li>
+					</ul> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+         {%else%}
+{% comment %} <h1>siddhesh</h1> {% endcomment %}
+{% endif %}
+
+   	 {% endfor %} 
+
+</section>
+
+
+<!-- custom js file link  -->
+{% comment %} Cart logic code start here {% endcomment %}
+
+<script>
+
+const add_to_cart =(id,name)=>{
+
+
+  var cart = JSON.parse(localStorage.getItem("cart"))
+
+
+
+
+   //id=id+150;
+ 
+  if (cart) {
+    if (cart[id]) {
+      cart[id] = { name: name, value: cart[id].value + 1 };
+
+    } else {
+      cart[id] = { name: name, value: 1 };
+    }
+  } else {
+    cart = { [id]: { name: name, value: 1 } };
+  }
+
+
+
+localStorage.setItem("cart",JSON.stringify(cart))
+
+
+
+var value = JSON.parse(localStorage.getItem("cart"));
+
+document.getElementById("cartId").innerHTML = Object.keys(value).length
+}
+
+
+
+</script>
+{% comment %} Products ends  {% endcomment %}
+
+
+
+{% endblock body %}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

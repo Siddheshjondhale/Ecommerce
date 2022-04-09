@@ -1,0 +1,91 @@
+{% extends "homepage\basic.html" %}
+
+{% load static %}
+
+{% block title %}
+List
+{% endblock title %}
+
+
+{% block head %}
+ 
+   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" href="{% static 'css/mens.css' %}">
+
+{% endblock head %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+
+
+<div class="container">
+    {% comment %} <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h2>Checkout form</h2>
+      <p class="lead">Your items are ready to checkout please fill this form.</p>
+    </div> {% endcomment %}
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="row">
+     
+      <div class="col-md-12 order-md-1">
+        <h4 class="mb-3">QR Code Payment Details</h4>
+        <form action="/Qrdetailsubmitted/" class="needs-validation" enctype="multipart/form-data" method="POST">
+                  {% csrf_token %}
+           <input type="hidden" name="jsonCart" value="{{data}}" id="jsonCartHidden">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="Name">Name</label>
+              <input type="text" class="form-control" id="Name" placeholder="" name="Namehai" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="TransactionID">Transaction ID</label>
+              <input type="number" class="form-control" id="TransactionID" placeholder="" name="TransactionID" required>
+              <div class="invalid-feedback">
+                Valid Transaction ID is required.
+              </div>
+            </div>
+          </div>
+
+         
+
+          <div class="mb-3">
+            <label for="UPINumber">UPI Number<span class="text-muted"> (Optional)</span></label>
+            <input type="number" class="form-control" id="UPINumber" placeholder="Enter UPI Number" name="UPINumber">
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="UPIID">UPI ID</label>
+            <input type="text" name="UPIID" class="form-control" id="UPIID" placeholder="9021849179@axisbank" required>
+            <div class="invalid-feedback">
+              Please enter your shipping address.
+            </div>
+          </div>
+
+         
+  
+          <hr class="mb-4"> 
+         
+               <label for="PaymentScreenshot">Please Attach Transaction Successfull Screenshot</label>
+              <div class="input-group mb-3 mt-2">
+                <input type="file" name="PaymentScreenshot" class="form-control" id="PaymentScreenshot" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+              </div>
+        
+          <hr class="mb-4">
+        <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  {% endblock body %}
+    

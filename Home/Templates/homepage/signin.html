@@ -1,0 +1,156 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    {% comment %} Navbar links  starts {% endcomment %}
+      <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% comment %} Navbar links ends {% endcomment %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login-cart-product.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Read & Vibe | Shop Online</title>
+</head>
+
+<body>
+    {% comment %} <header>
+        <div class="header-container">
+            <a href="index.html">
+                <div class="logo-container">
+                    <h1>R & V</h1>
+                </div>
+            </a>
+            <nav>
+                <ul class="links">
+                    <li><a href="index.html" class="link">Products</a></li>
+                    <li><a href="about.html" class="link">About</a></li>
+                    <li><a href="contact.html" class="link">Contact</a></li>
+                    <li><a href="login.html" class="link">Login</a></li>
+                </ul>
+
+                <div class="cart bigger">
+                    <a href="cart.html"><img src="Images/cart.svg" alt="cart"></a>
+                    <p>0</p>
+                </div>
+                
+                <div class="menu-icon" onclick="menutoggle()">
+                    <img src="Images/menu.svg" id="burger">
+                </div>
+            </nav>
+        </div>
+
+        <ul class="links mobile" id="menu">
+            <li><a href="index.html" class="link">Products</a></li>
+            <li><a href="about.html" class="link">About</a></li>
+            <li><a href="contact.html" class="link">Contact</a></li>
+            <li><a href="login.html" class="link">Login</a></li>
+        </ul>
+    </header> {% endcomment %}
+
+    
+<!-- header section starts -->
+
+    
+<header>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <a href="#" class="logo">nike</a>
+
+ 
+    <nav class="navbar">
+        <a href="">home</a>
+        <a href="/mens">mens</a>
+        <a href="/womens">womens</a>
+        <a href="/kids">kids</a>
+        <a href="/about">about</a>
+    </nav>
+
+    <div class="icons">
+        <a href="#" class="fas fa-heart"></a>
+        <a href="#" class="fas fa-shopping-cart"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+    <main>
+        <div class="container">
+            <div class="row">
+                    <form  class="login" action="/signindo/" method="POST">
+                          {% csrf_token %}
+                        <h1>Register</h1>
+                       
+                         <div class="mini-form" style="margin-top: 30px;">
+                            <input type="text" name="first_name" required>
+                            <label for="password" class="mini-label">
+                                <span class="mini-content">First name</span>
+                            </label>
+                        </div>
+                        <div class="mini-form">
+                            <input type="text" name="last_name" required>
+                            <label for="password" class="mini-label">
+                                <span class="mini-content">Last name</span>
+                            </label>
+                        </div>
+                         <div class="mini-form" >
+                            <input type="text" name="email" required>
+                            <label for="email" class="mini-label">
+                                <span class="mini-content">Email</span>
+                            </label>
+                        </div>
+                        <div class="mini-form">
+                            <input type="password" name="password" required>
+                            <label for="password" class="mini-label">
+                                <span class="mini-content">Password</span>
+                            </label>
+                        </div>
+                        <div class="mini-form">
+                            <input type="password" name="confirm_password" required>
+                            <label for="password" class="mini-label">
+                                <span class="mini-content">Confirm Password</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn sbmt" >Register</button>
+                        
+                     
+                        
+                        
+                    </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="col">
+                <h2 class="row">Follow Us</h2>
+                <ul class="col-4">
+                    <a href="" class="bigger"><img src="Images/insta.png" width="40px"></a>
+                    <a href="" class="bigger"><img src="Images/facebook.png" width="40px"></a>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="white-logo-container row">
+                    <h1>R & V</h1>
+                </div>
+                Email:
+                <p class="row">readandvibe-support@gmail.com</p>
+            </div>
+        </div>
+        <p class="copy">
+            &#169; 2021 - Read & Vibe
+        </p>
+    </footer>
+
+</body>
+<script src="Scripts/mobileMenu.js"></script>
+</html>

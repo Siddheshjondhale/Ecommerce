@@ -1,0 +1,117 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login-cart-product.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Read & Vibe | Shop Online</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html">
+                <div class="logo-container">
+                    <h1>R & V</h1>
+                </div>
+            </a>
+            <nav>
+                <ul class="links">
+                    <li><a href="index.html" class="link">Products</a></li>
+                    <li><a href="about.html" class="link">About</a></li>
+                    <li><a href="contact.html" class="link">Contact</a></li>
+                    <li><a href="login.html" class="link">Login</a></li>
+                </ul>
+
+                <div class="cart bigger">
+                    <a href="cart.html"><img src="Images/cart.svg" alt="cart"></a>
+                    <p>0</p>
+                </div>
+                
+                <div class="menu-icon" onclick="menutoggle()">
+                    <img src="Images/menu.svg" id="burger">
+                </div>
+            </nav>
+        </div>
+
+        <ul class="links mobile" id="menu">
+            <li><a href="index.html" class="link">Products</a></li>
+            <li><a href="about.html" class="link">About</a></li>
+            <li><a href="contact.html" class="link">Contact</a></li>
+            <li><a href="login.html" class="link">Login</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="container">
+            <div class="sub-container">
+                <div class="title">
+                    <h2>Contact</h2>
+                </div>
+                <div class="row">
+                    <div class="small-container">
+                        <div class="flex-center">
+                            <p>You can contact us manually using our contact info, or by filling out the contact form.</p>
+                        </div><br>
+                        <p>Email: readandvibe-support@gmail.com<br><br>Phone: +965 99535499</p><hr>
+                        <h2 style="text-align: center; font-weight: normal;">Contact Form</h2>
+                        <form action="">
+                            <div class="mini-form">
+                                <input type="text" name="name" required>
+                                <label for="name" class="mini-label">
+                                    <span class="mini-content">Name</span>
+                                </label>
+                            </div>
+                            <div class="mini-form">
+                                <input type="text" name="email" required>
+                                <label for="email" class="mini-label">
+                                    <span class="mini-content">Email</span>
+                                </label>
+                            </div>
+                            <div class="mini-form">
+                                <input type="text" name="subject" required>
+                                <label for="subject" class="mini-label">
+                                    <span class="mini-content">Subject</span>
+                                </label>
+                            </div>
+                            <div class="textarea">
+                                <textarea name="msg" id="" cols="30" rows="10" required></textarea>
+                                <label for="msg" class="ta-label">
+                                    <span class="ta-content">Message</span>
+                                </label>
+                            </div>
+                            <input type="submit" class="btn sbmt" value="Send">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="col">
+                <h2 class="row">Follow Us</h2>
+                <ul class="col-4">
+                    <a href="" class="bigger"><img src="Images/insta.png" width="40px"></a>
+                    <a href="" class="bigger"><img src="Images/facebook.png" width="40px"></a>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="white-logo-container row">
+                    <h1>R & V</h1>
+                </div>
+                Email:
+                <p class="row">readandvibe-support@gmail.com</p>
+            </div>
+        </div>
+        <p class="copy">
+            &#169; 2021 - Read & Vibe
+        </p>
+    </footer>
+</body>
+<script src="Scripts/mobileMenu.js"></script>
+</html>

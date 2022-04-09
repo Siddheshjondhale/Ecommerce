@@ -1,0 +1,268 @@
+{% extends "homepage\basic.html" %}
+
+{% load static %}
+
+{% block title %}
+List
+{% endblock title %}
+
+
+{% block head %}
+ 
+   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" href="{% static 'css/mens.css' %}">
+
+{% endblock head %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+{% if user.is_authenticated %}
+
+<div class="container">
+    {% comment %} <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h2>Checkout form</h2>
+      <p class="lead">Your items are ready to checkout please fill this form.</p>
+    </div> {% endcomment %}
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="row">
+     
+      <div class="col-md-12 order-md-1">
+        <h4 class="mb-3">Billing address</h4>
+        <form action="/submitcheckout/" class="needs-validation" method="POST">
+                  {% csrf_token %}
+           <input type="hidden" name="jsonCart" value="{{data}}" id="jsonCartHidden">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">First name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" name="first_name" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Last name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" name="last_name" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+
+         
+
+          <div class="mb-3">
+            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email">
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address">Address</label>
+            <input type="text" name="address" class="form-control" id="address" placeholder="1234 Main St" required>
+            <div class="invalid-feedback">
+              Please enter your shipping address.
+            </div>
+          </div>
+
+         
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="country">State</label>
+              <select class="custom-select d-block w-100" id="country" name="state" required>
+                <option value="">Choose...</option>
+                <option>Delhi</option>
+                <option>Maharashtra</option>
+                <option>Bihar</option>
+                <option>Goa</option>
+                <option>Uttar Pradesh</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid state.
+              </div>
+            </div>
+        
+            <div class="col-md-3 mb-3">
+              <label for="zip">Zip</label>
+              <input type="text" class="form-control" id="zip" name="zip" placeholder="110095" required>
+              <div class="invalid-feedback">
+                Zip code required.
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4"> 
+          <div class="custom-control custom-checkbox">
+            <input name="isSameBillingAddress" type="checkbox" class="custom-control-input" id="same-address">
+            <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+          </div>
+        
+          <hr class="mb-4">
+
+          <h4 class="mb-3">Payment Options</h4>
+            <div class="custom-control custom-checkbox">
+            <button type="button"  class="btn btn-white btn-sm btn-block p-0" data-bs-toggle="modal" data-bs-target="#exampleModal11">
+            <input name="CODHai" type="checkbox" class="custom-control-input" id="COD"> </button>
+            <label class="custom-control-label" for="COD">Cash on delievery (COD)</label>
+          </div>
+          <br>
+          {% comment %} <h4 class="mb-3">QR scanner</h4>
+              <div class="custom-control custom-checkbox">
+              <input name="isSameBillingAddress" type="checkbox" class="custom-control-input" id="COD" checked>
+              <label class="custom-control-label" for="COD">UPI Scanner</label>
+          </div> {% endcomment %}
+                   <!-- Button trigger modal -->
+                   {% comment %} <h4 class="mb-3">UPI Scanner</h4> {% endcomment %}
+           
+<button type="button"  class="btn btn-white btn-sm btn-block p-0" data-bs-toggle="modal" data-bs-target="#exampleModal12">
+  <input name="UPIHai" type="checkbox" class="custom-control-input ml-0" id="COD">
+
+  UPI
+</button>
+         
+          <hr class="mb-4">
+          <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button> -->
+          <!-- Button trigger modal -->
+{% comment %} 
+<button type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal11">
+
+
+    Continue to checkout
+  </button> {% endcomment %}
+  
+<!-- Modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Final Step</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+             <div class="col-12">
+                <ul class="list-group mb-3">
+
+                  {% for key,value in data.items %}
+
+                  <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                      <h6 class="my-0">{{value.name}}</h6>
+                      <small class="text-muted"> <span class="badge bg-secondary mx-2">Qty : {{value.value}} </span><span class="badge bg-secondary mx-2">Price : {{value.price}} INR</span> </small>
+                    </div>
+                    <span class="text-muted">{{value.totalItemPrice}} INR</span>
+                  </li>
+
+                    
+                  {% endfor %}
+
+        
+
+
+          
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (INR)</span>
+            <strong>{{totalPrice}}</strong>
+          </li>
+        </ul>
+             </div>
+         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Order-Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+{% comment %} UPI MODEL {% endcomment %}
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Scan this QR code</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <div class="row h-50 w-50 m-auto ">
+          <img src="/media/scannerqr.jpeg " class="border p-3 img-fluid ">
+         </div>
+         <br>
+          <ul class="list-group mb-3  ">
+
+                  {% for key,value in data.items %}
+
+                  <li class="list-group-item d-flex justify-content-between lh-sm ">
+                    <div>
+                      <h6 class="my-0">{{value.name}}</h6>
+                      <small class="text-muted"> <span class="badge bg-secondary mx-2">Qty : {{value.value}} </span><span class="badge bg-secondary mx-2">Price : {{value.price}} INR</span> </small>
+                    </div>
+                    <span class="text-muted">{{value.totalItemPrice}} INR</span>
+                  </li>
+
+                    
+                  {% endfor %}
+
+        
+
+
+          
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (INR)</span>
+            <strong>{{totalPrice}}</strong>
+          </li>
+        </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Click here after you paid">Done the payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% comment %} Model ends {% endcomment %}
+{% comment %} UPI MODEL ends {% endcomment %}
+
+{% comment %} Model ends {% endcomment %}
+        </form>
+      </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017-2018 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  
+
+  {% else %}
+  <div class="pt-5">
+   <center class="custt pt-5 " >You Need to login for Checkout <a class="text-primary" href="/login/">login</a> </center>
+  </div>
+   {% endif %}
+
+  {% endblock body %}
+ 

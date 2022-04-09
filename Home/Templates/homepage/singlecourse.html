@@ -1,0 +1,87 @@
+ {% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'css/singleproduct.css' %}">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Read & Vibe | Shop Online</title>
+</head>
+
+<body>
+   
+    <main>
+            <div class="sub-container">
+            
+                <div class="row">
+                {% if error == "null" %}
+                    <div class="product-showcase">
+                        <div class="product-images col-2">
+                            <img src="/media/{{data.image}}" alt="" width="100%" id="product-image">
+
+                            {% comment %} <div class="image-row">
+                                <div class="small-image-col" style="border-color: #FFA20C">
+                                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" width="100%" class="small-image">
+                                </div>
+                                <div class="small-image-col">
+                                    <img src="Ihttps://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" width="100%" class="small-image">
+                                </div>
+                                <div class="small-image-col">
+                                    <img src="Ihttps://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" width="100%" class="small-image">
+                                </div>
+                                <div class="small-image-col">
+                                    <img src="Ihttps://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" width="100%" class="small-image">
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="product-text col-2">
+                            <h1>{{data.title}}</h1>
+                            <p>10.00 KWD</p>
+                            <div class="input-container">
+                                <select>
+                                    <option value="" disabled selected hidden>Select Size</option>
+                                    <option>XXL</option>
+                                    <option>XL</option>
+                                    <option>L</option>
+                                    <option>M</option>
+                                    <option>S</option>
+                                </select>
+                                <div class="product-input">
+                                    <input type="number" required min="1" max="9" value="1" name="qty">
+                                    <a href="" class="btn">Add To Cart</a>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <h3>Product Description</h3>
+                                <p>{{data.descriptions}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                
+{%else%}
+<h1>Product doent exists</h1>
+{% endif %}
+
+                </div>
+            </div>
+    </main>
+
+
+</body>
+<script src="Scripts/mobileMenu.js"></script>
+<script src="Scripts/imageChange.js"></script></html>
+{% comment %} {% load static%}
+
+    {% if error == "null" %}
+        <h1>{{data.title}}</h1>
+        
+                
+{% else %}
+<h1>Product doent exists</h1>
+{% endif %} {% endcomment %}
