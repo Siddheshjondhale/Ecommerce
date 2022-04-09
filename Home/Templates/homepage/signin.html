@@ -1,87 +1,35 @@
-{% load static%}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "homepage\basic.html" %}
 
-<head>
+{% load static %}
+
+{% block title %}
+List
+{% endblock title %}
+
+
+{% block head %}
+ 
+   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-
-    {% comment %} Navbar links  starts {% endcomment %}
-      <!-- custom css file link  -->
+    <!-- custom css file link  -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      <!-- font awesome cdn link  -->
+     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-{% comment %} Navbar links ends {% endcomment %}
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/login-cart-product.css' %}">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Read & Vibe | Shop Online</title>
-</head>
+{% endblock head %}
 
-<body>
-    {% comment %} <header>
-        <div class="header-container">
-            <a href="index.html">
-                <div class="logo-container">
-                    <h1>R & V</h1>
-                </div>
-            </a>
-            <nav>
-                <ul class="links">
-                    <li><a href="index.html" class="link">Products</a></li>
-                    <li><a href="about.html" class="link">About</a></li>
-                    <li><a href="contact.html" class="link">Contact</a></li>
-                    <li><a href="login.html" class="link">Login</a></li>
-                </ul>
+{% block css %}
 
-                <div class="cart bigger">
-                    <a href="cart.html"><img src="Images/cart.svg" alt="cart"></a>
-                    <p>0</p>
-                </div>
-                
-                <div class="menu-icon" onclick="menutoggle()">
-                    <img src="Images/menu.svg" id="burger">
-                </div>
-            </nav>
-        </div>
+{% endblock css %}
 
-        <ul class="links mobile" id="menu">
-            <li><a href="index.html" class="link">Products</a></li>
-            <li><a href="about.html" class="link">About</a></li>
-            <li><a href="contact.html" class="link">Contact</a></li>
-            <li><a href="login.html" class="link">Login</a></li>
-        </ul>
-    </header> {% endcomment %}
-
-    
-<!-- header section starts -->
-
-    
-<header>
-
-    <div id="menu-bar" class="fas fa-bars"></div>
-
-    <a href="#" class="logo">nike</a>
-
- 
-    <nav class="navbar">
-        <a href="">home</a>
-        <a href="/mens">mens</a>
-        <a href="/womens">womens</a>
-        <a href="/kids">kids</a>
-        <a href="/about">about</a>
-    </nav>
-
-    <div class="icons">
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
-        <a href="#" class="fas fa-user"></a>
-    </div>
-
-</header>
-
-<!-- header section ends -->
+{% block body %}
 
     <main>
         <div class="container">
@@ -120,8 +68,10 @@
                                 <span class="mini-content">Confirm Password</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn sbmt" >Register</button>
-                        
+                        <button type="submit" class="btn btn-primary sbmt" >Register</button>
+      <div class="pt-2">
+  <h5> <center class="custt pt-2 " >Already have an account  <a class="text-primary" href="/login/">click here </a> Login </center></h5>
+  </div>                   
                      
                         
                         
@@ -129,28 +79,17 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer-container">
-            <div class="col">
-                <h2 class="row">Follow Us</h2>
-                <ul class="col-4">
-                    <a href="" class="bigger"><img src="Images/insta.png" width="40px"></a>
-                    <a href="" class="bigger"><img src="Images/facebook.png" width="40px"></a>
-                </ul>
-            </div>
-            <div class="col">
-                <div class="white-logo-container row">
-                    <h1>R & V</h1>
-                </div>
-                Email:
-                <p class="row">readandvibe-support@gmail.com</p>
-            </div>
-        </div>
-        <p class="copy">
-            &#169; 2021 - Read & Vibe
-        </p>
-    </footer>
+  
+<!-- footer section  -->
+<footer style="font-size:16px;" class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017-2018 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
 
-</body>
-<script src="Scripts/mobileMenu.js"></script>
-</html>
+
+
+{% endblock body %}
