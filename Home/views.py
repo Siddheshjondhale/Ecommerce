@@ -316,4 +316,9 @@ def searchkids(request):
 	data=mensboy.objects.filter(title=q).order_by('-id')
 	return render(request,'homepage/searchkids.html',{'data':data})
 
+def searchaccessories(request):
+	q=request.GET['q']
+	data=mensboy.objects.filter(title=q).order_by('-id')
+	return render(request,'homepage/searchaccessories.html',{'data':data})
+
 # search bar code ends
