@@ -88,7 +88,77 @@ List
 
 
     </div>
-</div>
+    <h3 class="d-flex flex-start mt-5 text-dark">Reviews   </h3>
+   <h5>Click here to add reviews <button type="button" class="card-link btn  btn-success mx-2 my-2" style="border-radius: 3px;"
+                    data-bs-toggle="modal" data-bs-target="#staffModal_{{d.id}}">
+                    Add remarks
+                  </button></h5>
+
+
+            
+
+
+
+
+
+
+
+{% comment %} Remark model starts {% endcomment %}
+ <!-- Staff modal -->
+        {% comment %} {% for d in data %} {% endcomment %}
+ 
+              <div class="modal fade" id="staffModal_{{d.id}}" tabindex="-1"
+                aria-labelledby="exampleModalLabel_{{d.id}}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel_{{d.id}}">Add Reviews</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+
+                    <form action="/reviews/" enctype="multipart/form-data" method="POST">
+                      {% csrf_token %}
+                      <div class="modal-body">
+                        <div class="form-floating m-2">
+                          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px" name="remarks"></textarea>
+                          <label for="floatingTextarea2">Reviews</label>
+                        </div>
+                        <div class="form-floating m-2">
+                          <select class="form-select" name="rating" id="floatingSelectGrid"
+                            aria-label="Floating label select example">
+                            <option selected>Rate this Product</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                          </select>
+                          <label for="floatingSelectGrid">Select Rating</label>
+                        </div>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+
+                      </div>
+                    </form>
+
+
+                  </div>
+                </div>
+              </div>
+        {% comment %} {% endfor %} {% endcomment %}
+
+{% comment %} Remark model ends {% endcomment %}
+  
 
 
 
