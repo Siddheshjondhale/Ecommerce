@@ -74,6 +74,54 @@ List
                                 <div class="col-lg-6">
                                     <a href="#" class="btn btn-success w-100">Shop Now</a>
                                 </div>
+                                
+
+
+
+                            <div>
+                                <form class="review-form" method="GET" action="/review">
+
+                                  {% for prod in mensProduct %}
+                                  <input type="hidden" name="prod_id" id="prod_id" value="{{prod.id}}"/>
+                                  {% endfor %}
+                                  <div>
+                                    <textarea name="input" id="" type="text" name="comment" cols="30" rows="10"></textarea>
+                                  </div>
+                                  <div class="col-auto">
+                                    <label for="inputPassword2" class="visually-hidden">Password</label>
+                                    <input type="hidden" name="prod_id" id="inputPassword2" placeholder="Password">
+                                  </div>
+                                  <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary mb-3">submit</button>
+                                  </div>
+                                  <div class="rating-wrapper">
+                                    <input type="radio"  id="star-5" value="5" name="rate"> <label for="star-5" class="fas fa-star"></label>
+                                  </div>
+                                  <div class="rating-wrapper">
+                                    <input type="radio"  id="star-4" value="4" name="rate"> <label for="star-5" class="fas fa-star"></label>
+                                  </div>
+                                  <div class="rating-wrapper">
+                                    <input type="radio"  id="star-3" value="3" name="rate"> <label for="star-5" class="fas fa-star"></label>
+                                  </div>
+                                  <div class="rating-wrapper">
+                                    <input type="radio"  id="star-2" value="2" name="rate"> <label for="star-5" class="fas fa-star"></label>
+                                  </div>
+                                  <div class="rating-wrapper">
+                                    <input type="radio"  id="star-1" value="1" name="rate"> <label for="star-5" class="fas fa-star"></label>
+                                  </div>
+
+                                </form>
+                              </div>
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>

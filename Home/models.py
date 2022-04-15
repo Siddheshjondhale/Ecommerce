@@ -1,6 +1,8 @@
 from django.utils import timezone
 from unicodedata import category
 from django.db.models.base import Model, ModelBase
+from django.contrib.auth.models import User
+
 
 from django.db import models
 
@@ -46,3 +48,13 @@ class detailsqr(models.Model):
     pub_date = models.DateField(default=timezone.now)
     def __str__(self):
         return self.Name
+    
+class Review(models.Model):
+    user = models.ForeignKey(User, models.CASCADE)
+    mensProduct =  models.ForeignKey(Mens, models.CASCADE)
+    comment = models.TextField(max_length=250 , default='ok')
+    rate = models.IntegerField(default=5)
+    created_at = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.id)

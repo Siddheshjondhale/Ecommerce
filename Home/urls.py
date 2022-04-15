@@ -41,5 +41,8 @@ urlpatterns = [
     path('searchwomens',views.searchwomens,name='search'),
     path('searchkids',views.searchkids,name='search'),
     path('searchaccessories',views.searchaccessories,name='search'),
+    
+    #review 
+    path('review',views.Review_Rate,name='review'),
   
 ]

@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate , login ,logout
 from . models import Mens as mensboy
 from . models import detailsqr as detailsqrhai
 from . models import order as Orderdone
+from . models import Review as reviewhai
 # from . models import Mens,Womens,Kids as AllProducts
 
 
@@ -322,3 +323,16 @@ def searchaccessories(request):
 	return render(request,'homepage/searchaccessories.html',{'data':data})
 
 # search bar code ends
+
+
+def Review_Rate(request):
+    if request.method == "GET":
+        prod_id = request.GET.get('prod_id')
+        mensProduct = request.GET.get(id =prod_id)
+        comment = request.GET.get('comment')
+        rate = request.GET.get('rate')
+        user = request.user
+        reviewhai(user=user, mensProduct=mensProduct, comment=comment, rate=rate).save()
+        return redirect('product_detail',id=prod_id)
+    # print("review")
+    # return render(request,"homepage\details_mens.html")
