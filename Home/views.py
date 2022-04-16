@@ -95,6 +95,7 @@ def logoutkaro(request):
 
 
 def Mens(request):
+    
     Mens_products=mensboy.objects.all()
     params = {
         "data":Mens_products

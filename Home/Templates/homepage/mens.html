@@ -171,7 +171,20 @@ span.custom-ar{
 								</div>
 						</div>
 				</div>
-
+        <div class="col-3 mb-5">
+          <form class="d-flex" action="/project/" method="GET">
+            <select Class="form-select" name="sort_by" id="">
+              <option value="">Default</option>
+              <option value="submitted_by">Author</option>
+              <option value="title">Title</option>
+              <option value="pub_on">Created On</option>
+              <option value="updated_on">Updated On</option>
+            </select>  
+            <button class="btn btn-secondary ms-1" type="submit">Sort</button>
+          </form>
+        
+        
+        </div>
 
     <div class="row">
 	 {% for i in data  %}

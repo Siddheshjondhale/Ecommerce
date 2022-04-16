@@ -17,6 +17,8 @@ class Mens(models.Model):
     descriptions= models.CharField(max_length=200,default="")
     category =  models.CharField(max_length=50,default="")
     
+    # subcategory =  models.ForeignKey("Athletic","Flip flops","Loafers","Sandals","Casual Shoes",models.CASCADE)
+    
     def __str__(self):
         return self.title
 
