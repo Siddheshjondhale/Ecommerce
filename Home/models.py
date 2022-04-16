@@ -51,8 +51,8 @@ class detailsqr(models.Model):
     
 class Review(models.Model):
     user = models.ForeignKey(User, models.CASCADE)
-    mensProduct =  models.ForeignKey(Mens, models.CASCADE)
-    comment = models.TextField(max_length=250 , default='ok')
+    mensProduct =  models.ForeignKey(Mens,models.CASCADE)
+    comment = models.TextField(max_length=250)
     rate = models.IntegerField(default=5)
     created_at = models.DateField(auto_now_add=True)
     

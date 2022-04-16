@@ -1,3 +1,5 @@
+from math import prod
+import profile
 from urllib import request
 import json
 from django.forms import TypedMultipleChoiceField
@@ -129,9 +131,18 @@ def Accessories(request):
 
 def Detail_mens(request,id):
     # name = request.GET.get("id")
+    
+    product=mensboy.objects.filter(id=id)
+    productreviews=mensboy.objects.get(id=id)
 
+    review=reviewhai.objects.filter(mensProduct=productreviews)
+    print(id)
+    # print(product)
     try:
-        params = {"data":mensboy.objects.get(id=id),"error":"null"}
+        params = {
+                  "reviews":review,  
+                  "product":product,"data":mensboy.objects.get(id=id),
+                    "error":"null"}
     except:
         params = {"data":{},"error":"Product not found"}
 
@@ -140,9 +151,17 @@ def Detail_mens(request,id):
 
 def Detail_womens(request,id):
     # name = request.GET.get("id")
+    product=mensboy.objects.filter(id=id)
+    productreviews=mensboy.objects.get(id=id)
 
+    review=reviewhai.objects.filter(mensProduct=productreviews)
+    print(id)
+    # print(product)
     try:
-        params = {"data":mensboy.objects.get(id=id),"error":"null"}
+        params = {
+                  "reviews":review,  
+                  "product":product,"data":mensboy.objects.get(id=id),
+                    "error":"null"}
     except:
         params = {"data":{},"error":"Product not found"}
 
@@ -153,8 +172,17 @@ def Detail_womens(request,id):
 def Detail_kids(request,id):
     # name = request.GET.get("id")
 
+    product=mensboy.objects.filter(id=id)
+    productreviews=mensboy.objects.get(id=id)
+
+    review=reviewhai.objects.filter(mensProduct=productreviews)
+    print(id)
+    # print(product)
     try:
-        params = {"data":mensboy.objects.get(id=id),"error":"null"}
+        params = {
+                  "reviews":review,  
+                  "product":product,"data":mensboy.objects.get(id=id),
+                    "error":"null"}
     except:
         params = {"data":{},"error":"Product not found"}
 
@@ -163,9 +191,17 @@ def Detail_kids(request,id):
 
 def Detail_accessories(request,id):
     # name = request.GET.get("id")
+    product=mensboy.objects.filter(id=id)
+    productreviews=mensboy.objects.get(id=id)
 
+    review=reviewhai.objects.filter(mensProduct=productreviews)
+    print(id)
+    # print(product)
     try:
-        params = {"data":mensboy.objects.get(id=id),"error":"null"}
+        params = {
+                  "reviews":review,  
+                  "product":product,"data":mensboy.objects.get(id=id),
+                    "error":"null"}
     except:
         params = {"data":{},"error":"Product not found"}
 
@@ -327,12 +363,15 @@ def searchaccessories(request):
 
 def Review_Rate(request):
     if request.method == "GET":
-        prod_id = request.GET.get('prod_id')
-        mensProduct = request.GET.get(id =prod_id)
-        comment = request.GET.get('comment')
+        prod_id = request.GET.get("prod_id")
+        print("i am produ_id",prod_id)
+        # id=11
+        mensProduct = mensboy.objects.get(id=prod_id)
+        comment = request.GET.get("comment")
+        print("i am coommenrt",comment)
         rate = request.GET.get('rate')
         user = request.user
         reviewhai(user=user, mensProduct=mensProduct, comment=comment, rate=rate).save()
+        print("review")
         return redirect('product_detail',id=prod_id)
-    # print("review")
-    # return render(request,"homepage\details_mens.html")
+

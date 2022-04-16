@@ -76,52 +76,6 @@ List
                                 </div>
                                 
 
-
-
-                            <div>
-                                <form class="review-form" method="GET" action="/review">
-
-                                  {% for prod in mensProduct %}
-                                  <input type="hidden" name="prod_id" id="prod_id" value="{{prod.id}}"/>
-                                  {% endfor %}
-                                  <div>
-                                    <textarea name="input" id="" type="text" name="comment" cols="30" rows="10"></textarea>
-                                  </div>
-                                  <div class="col-auto">
-                                    <label for="inputPassword2" class="visually-hidden">Password</label>
-                                    <input type="hidden" name="prod_id" id="inputPassword2" placeholder="Password">
-                                  </div>
-                                  <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary mb-3">submit</button>
-                                  </div>
-                                  <div class="rating-wrapper">
-                                    <input type="radio"  id="star-5" value="5" name="rate"> <label for="star-5" class="fas fa-star"></label>
-                                  </div>
-                                  <div class="rating-wrapper">
-                                    <input type="radio"  id="star-4" value="4" name="rate"> <label for="star-5" class="fas fa-star"></label>
-                                  </div>
-                                  <div class="rating-wrapper">
-                                    <input type="radio"  id="star-3" value="3" name="rate"> <label for="star-5" class="fas fa-star"></label>
-                                  </div>
-                                  <div class="rating-wrapper">
-                                    <input type="radio"  id="star-2" value="2" name="rate"> <label for="star-5" class="fas fa-star"></label>
-                                  </div>
-                                  <div class="rating-wrapper">
-                                    <input type="radio"  id="star-1" value="1" name="rate"> <label for="star-5" class="fas fa-star"></label>
-                                  </div>
-
-                                </form>
-                              </div>
-
-
-
-
-
-
-
-
-
-
                             </div>
                         </div>
                     </div>
@@ -134,14 +88,40 @@ List
 <h1>Product doent exists</h1>
 {% endif %}
 
-
+{% comment %} reviews section starts here  {% endcomment %}
     </div>
+{% if user.is_authenticated %}
     <h3 class="d-flex flex-start mt-5 text-dark">Reviews   </h3>
    <h5>Click here to add reviews <button type="button" class="card-link btn  btn-success mx-2 my-2" style="border-radius: 3px;"
                     data-bs-toggle="modal" data-bs-target="#staffModal_{{d.id}}">
                     Add remarks
                   </button></h5>
+    {% comment %} displaying comments {% endcomment %}
+    <div>
+    <ul class="remarks-con">
+  
+      {% for review in reviews %}
+        <li class=" p-2">
+          <div class="post-comments">
+            <p class="meta"><h5><span class="badge bg-secondary">{{review.rate}} 	&#9733; </span></h5>  {{review.created_at}} <a href="#">{{review.user.username}}</a> says : </p>
+            <p>
+                {{review.comment}}
+            </p>
+        </div>
+        </li>
+      {% endfor %}
+    
+    
+    </ul>
+  </div>
+  
 
+  {% else %}
+  <div class="mt-5">
+   <center class="custt mt-5 " >You Need to login to post review <a class="text-primary" href="/login/">login</a> </center>
+  </div>
+   {% endif %}
+{% comment %} reviews section ends here  {% endcomment %}
 
             
 
@@ -165,16 +145,21 @@ List
                     </div>
 
 
-                    <form action="/reviews/" enctype="multipart/form-data" method="POST">
-                      {% csrf_token %}
+                    <form action="/review"  method="GET">
+
+                      {% for prod in product %}
+
+                          <input type="hidden" name="prod_id" id="prod_id" value="{{prod.id}}"/>
+                                 
+                      {% endfor %}
                       <div class="modal-body">
                         <div class="form-floating m-2">
-                          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px" name="remarks"></textarea>
+                          <textarea class="form-control" placeholder="Leave a comment here" 
+                            style="height: 100px"  id="comment" name="comment"></textarea>
                           <label for="floatingTextarea2">Reviews</label>
                         </div>
                         <div class="form-floating m-2">
-                          <select class="form-select" name="rating" id="floatingSelectGrid"
+                          <select class="form-select" name="rate" id="floatingSelectGrid"
                             aria-label="Floating label select example">
                             <option selected>Rate this Product</option>
                             <option value="1">1</option>
