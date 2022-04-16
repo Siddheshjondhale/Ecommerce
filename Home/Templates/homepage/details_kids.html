@@ -33,7 +33,7 @@ List
         <div class="row hedding m-0 pl-3 pt-0 pb-3">
                   <ol class="breadcrumb pl-0 ml-5 product_details ">
                         <li class="breadcrumb-item text-primary"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item  text-primary"><a href="/accessories">Accessories</a></li>
+                        <li class="breadcrumb-item  text-primary"><a href="/Kids">Kids</a></li>
                         <li class="breadcrumb-item active text-white" aria-current="page">Details</li>
                     </ol>
      </div>   
@@ -65,7 +65,27 @@ List
                         <div class="col-lg-12">
                             <p class="tag-section"><strong>Tag : </strong><a href="">Woman</a><a href="">,Man</a></p>
                         </div>
-                        
+                        {% comment %} Size added here starts  {% endcomment %}
+
+                        <div class="form-floating col-md-6 mb-4 ">
+                          <select class="form-select-sm" name="rate" id="sizehai"
+                            aria-label="Floating label select example">
+                            <option selected>Rate this Product</option>
+                            <option value="1">1UK</option>
+                            <option value="2">2UK</option>
+                            <option value="3">3UK</option>
+                            <option value="4">4UK</option>
+                            <option value="5">5UK</option>
+                            <option value="6">6UK</option>
+                            <option value="7">7UK</option>
+                            <option value="8">8UK</option>
+                            <option value="9">9UK</option>
+                            <option value="10">10UK</option>
+                          </select>
+                          <label for="floatingSelectGrid" class="mt-3">Size</label>
+                        </div>
+                        {% comment %} Size added here ends  {% endcomment %}
+ 
                         <div class="col-lg-12 mt-3">
                             <div class="row">
                                 <div class="col-lg-6 pb-2">
@@ -90,6 +110,7 @@ List
 
 {% comment %} reviews section starts here  {% endcomment %}
     </div>
+{% if user.is_authenticated %}
     <h3 class="d-flex flex-start mt-5 text-dark">Reviews   </h3>
    <h5>Click here to add reviews <button type="button" class="card-link btn  btn-success mx-2 my-2" style="border-radius: 3px;"
                     data-bs-toggle="modal" data-bs-target="#staffModal_{{d.id}}">
@@ -113,6 +134,13 @@ List
     
     </ul>
   </div>
+  
+
+  {% else %}
+  <div class="mt-5">
+   <center class="custt mt-5 " >You Need to login to post review <a class="text-primary" href="/login/">login</a> </center>
+  </div>
+   {% endif %}
 {% comment %} reviews section ends here  {% endcomment %}
 
             
@@ -150,6 +178,7 @@ List
                             style="height: 100px"  id="comment" name="comment"></textarea>
                           <label for="floatingTextarea2">Reviews</label>
                         </div>
+                        {% comment %} Reviews added here  {% endcomment %}
                         <div class="form-floating m-2">
                           <select class="form-select" name="rate" id="floatingSelectGrid"
                             aria-label="Floating label select example">
@@ -196,17 +225,17 @@ const add_to_cart =(id,name)=>{
 
 
   var cart = JSON.parse(localStorage.getItem("cart"))
-
+  var getValue = document. getElementById('sizehai'). selectedOptions[0]. value;
 
   if (cart) {
     if (cart[id]) {
-      cart[id] = { name: name, value: cart[id].value + 1 };
+      cart[id] = { name: name, value: cart[id].value + 1,size:getValue };
 
     } else {
-      cart[id] = { name: name, value: 1 };
+      cart[id] = { name: name, value: 1,size:getValue};
     }
   } else {
-    cart = { [id]: { name: name, value: 1 } };
+    cart = { [id]: { name: name, value: 1,size:getValue } };
 
   }
 
