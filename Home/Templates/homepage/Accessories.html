@@ -317,7 +317,7 @@ Object.keys(cart).map((item) => {
    htmlStr =
      htmlStr +
      " " +
-     `<li class="list-group-item d-flex justify-content-between">${cart[item].name} <span class="d-flex"><span style="cursor:pointer" onclick="addItem(${item})" class="custom-ar my-auto">+</span><span class="badge bg-primary m-auto">${cart[item].value}</span><span style="cursor:pointer" onclick="removeItem(${item})" class="custom-ar my-auto">-</span></span></li>`;
+     `<li class="list-group-item d-flex justify-content-between">${cart[item].name} (${cart[item].size} UK) <span class="d-flex"><span style="cursor:pointer" onclick="addItem(${item})" class="custom-ar my-auto">+</span><span class="badge bg-primary m-auto">${cart[item].value}</span><span style="cursor:pointer" onclick="removeItem(${item})" class="custom-ar my-auto">-</span></span></li>`;
 
    // for reference
    // item = 4
