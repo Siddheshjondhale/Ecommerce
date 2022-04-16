@@ -171,7 +171,21 @@ onclick="addHiddenVal()"
               </div>
           </div>
   
-  
+  {% comment %} Filter Section starts here {% endcomment %}
+  <div class="col-3 mb-5">
+    <form class="d-flex" action="/accessories/" method="GET">
+      <select Class="form-select" name="sort_by" id="">
+        <option value="All">ALL</option>
+        <option value="Casual">Casual shoes</option>
+        <option value="Athletic">Athletic shoes </option>
+        <option value="Sandals">Sandals</option>
+        <option value="Clog">Clog</option>
+      </select>  
+      <button class="btn btn-secondary ms-1" type="submit">Filter</button>
+    </form>  
+  </div>
+{% comment %} Filter Section ends here {% endcomment %}
+
       <div class="row">
      {% for i in data  %}
      {% if i.category == "Accessories" %}

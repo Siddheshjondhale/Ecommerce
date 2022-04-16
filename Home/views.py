@@ -115,26 +115,59 @@ def Mens(request):
 
 
 def Womens(request):
-    Womens_products=mensboy.objects.all()
+    sort_by = request.GET.get("sort_by")
+    print(sort_by)
+
+    if sort_by:
+        Mens_products = mensboy.objects.filter(subcategory=sort_by)   
+    else:
+        Mens_products = mensboy.objects.all()
+    
+    if sort_by=="All":
+        Mens_products = mensboy.objects.all()
+   
     params = {
-        "data":Womens_products
+        "data":Mens_products
     }
+    
     return render(request,"homepage/womens.html",params)
     
 
 def Kids(request):
-    Kids_products=mensboy.objects.all()
+    sort_by = request.GET.get("sort_by")
+    print(sort_by)
+
+    if sort_by:
+        Mens_products = mensboy.objects.filter(subcategory=sort_by)   
+    else:
+        Mens_products = mensboy.objects.all()
+    
+    if sort_by=="All":
+        Mens_products = mensboy.objects.all()
+   
     params = {
-        "data":Kids_products
+        "data":Mens_products
     }
+    
     return render(request,"homepage/kids.html",params)
 
 
 def Accessories(request):
-    Accessories_products=mensboy.objects.all()
+    sort_by = request.GET.get("sort_by")
+    print(sort_by)
+
+    if sort_by:
+        Mens_products = mensboy.objects.filter(subcategory=sort_by)   
+    else:
+        Mens_products = mensboy.objects.all()
+    
+    if sort_by=="All":
+        Mens_products = mensboy.objects.all()
+   
     params = {
-        "data":Accessories_products
+        "data":Mens_products
     }
+    
     return render(request,"homepage/Accessories.html",params)
 
 
