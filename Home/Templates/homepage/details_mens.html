@@ -65,7 +65,23 @@ List
                         <div class="col-lg-12">
                             <p class="tag-section"><strong>Tag : </strong><a href="">Woman</a><a href="">,Man</a></p>
                         </div>
-                        
+                        <div class="form-floating col-md-6 mb-4 ">
+                          <select class="form-select-sm" name="rate" id="sizehai"
+                            aria-label="Floating label select example">
+                            <option selected>Rate this Product</option>
+                            <option value="1">1UK</option>
+                            <option value="2">2UK</option>
+                            <option value="3">3UK</option>
+                            <option value="4">4UK</option>
+                            <option value="5">5UK</option>
+                            <option value="6">6UK</option>
+                            <option value="7">7UK</option>
+                            <option value="8">8UK</option>
+                            <option value="9">9UK</option>
+                            <option value="10">10UK</option>
+                          </select>
+                          <label for="floatingSelectGrid" class="mt-3">Size</label>
+                        </div>
                         <div class="col-lg-12 mt-3">
                             <div class="row">
                                 <div class="col-lg-6 pb-2">
@@ -204,17 +220,17 @@ const add_to_cart =(id,name)=>{
 
 
   var cart = JSON.parse(localStorage.getItem("cart"))
-
+  var getValue = document. getElementById('sizehai'). selectedOptions[0]. value;
 
   if (cart) {
     if (cart[id]) {
-      cart[id] = { name: name, value: cart[id].value + 1 };
+      cart[id] = { name: name, value: cart[id].value + 1,size:getValue };
 
     } else {
-      cart[id] = { name: name, value: 1 };
+      cart[id] = { name: name, value: 1,size:getValue};
     }
   } else {
-    cart = { [id]: { name: name, value: 1 } };
+    cart = { [id]: { name: name, value: 1,size:getValue } };
 
   }
 
