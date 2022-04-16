@@ -95,8 +95,17 @@ def logoutkaro(request):
 
 
 def Mens(request):
+    sort_by = request.GET.get("sort_by")
+    print(sort_by)
+
+    if sort_by:
+        Mens_products = mensboy.objects.filter(subcategory=sort_by)   
+    else:
+        Mens_products = mensboy.objects.all()
     
-    Mens_products=mensboy.objects.all()
+    if sort_by=="All":
+        Mens_products = mensboy.objects.all()
+   
     params = {
         "data":Mens_products
     }
