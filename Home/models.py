@@ -15,9 +15,22 @@ class Mens(models.Model):
     price = models.FloatField()
     image = models.ImageField(upload_to="Home\mensimg\images",default="")
     descriptions= models.CharField(max_length=200,default="")
-    category =  models.CharField(max_length=50,default="")
-    subcategory = models.CharField(max_length=50,default="")
+    categoryhai = (
+        ("Mens","Mens"),
+        ("Womens","Womens"),
+        ("Kids","Kids"),
+        ("Accessories","Accessories"),
+    )
+    category =  models.CharField(max_length=50,choices=categoryhai)
     
+    subcategoryhai = (
+        ("Casual","Casual"),
+        ("Athletic","Athletic"),
+        ("Sandals","Sandals"),
+        ("Clog","Clog"),
+    )
+    subcategory = models.CharField(max_length=100,choices=subcategoryhai)
+       
     def __str__(self):
         return self.title
 
