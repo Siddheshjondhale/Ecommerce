@@ -44,5 +44,6 @@ urlpatterns = [
     
     #review 
     path('review',views.Review_Rate,name='review'),
+    path('deliverydone',views.deliverydone,name='deliverydone'),
   
 ]

@@ -419,3 +419,15 @@ def Review_Rate(request):
         print("review")
         return redirect('product_detail',id=prod_id)
 
+
+# QR code details submitted section starts
+
+# For delivery staff model starts
+def deliverydone(request):
+    
+    qe=request.user
+    datasearched=Orderdone.objects.filter(email=qe)
+    print(datasearched)
+  
+    return render(request,'homepage/deliverydone.html',{'data':datasearched})
+# For delivery staff model ends

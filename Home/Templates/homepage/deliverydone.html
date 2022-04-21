@@ -1,0 +1,70 @@
+{% extends "homepage\basic.html" %}
+
+{% load static %}
+
+{% block title %}
+List
+{% endblock title %}
+
+
+{% block head %}
+ 
+   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" href="{% static 'css/mens.css' %}">
+
+{% endblock head %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block body %}
+{% if user.is_authenticated %}
+
+<div class="container">
+    {% comment %} <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <h2>Checkout form</h2>
+      <p class="lead">Your items are ready to checkout please fill this form.</p>
+    </div> {% endcomment %}
+<br>
+<br>
+<br>
+<br>
+<br>
+  
+{% for i in data  %}
+{{i.email}}
+{{i.jsonCart}}
+{% for iw in i.jsonCart%}
+
+<p>{{iw}}</p>
+
+{% endfor %}
+
+<br>
+
+UPI Payment : {{i.UPIHai}}
+<br>
+COD Payment : {{i.CODHai}}
+<br>
+Product Delieverd : {{i.productorder}}
+<br>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endfor %}
+
+  {% else %}
+  <div class="pt-5">
+   <center class="custt pt-5 " >You Need to login for Checkout <a class="text-primary" href="/login/">login</a> </center>
+  </div>
+   {% endif %}
+
+  {% endblock body %}
+ 

@@ -36,7 +36,7 @@ class Mens(models.Model):
 
         
 class order(models.Model):
-    jsonCart = models.CharField(max_length=200)
+    jsonCart = models.CharField(max_length=1500)
     email = models.CharField(max_length=50,default="")
     first_name =  models.CharField(max_length=50)
     state =  models.CharField(max_length=50)
@@ -44,6 +44,8 @@ class order(models.Model):
     last_name =  models.CharField(max_length=50)
     address =  models.CharField(max_length=200)
     zip = models.IntegerField()
+    productorder=models.BooleanField(default=False)
+    
     CODHai = models.BooleanField(default=True)
     UPIHai = models.BooleanField(default=False)
     order_date = models.DateField(default=timezone.now)
