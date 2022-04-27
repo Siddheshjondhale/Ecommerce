@@ -35,16 +35,16 @@ def Signindo(request):
         
         # validationssssss
         if (User.objects.filter(username=username).exists()): 
-            # messages.add_message(request, messages.INFO, 'Username already exist.')
+            messages.add_message(request, messages.INFO, 'Username already exist.')
             return redirect("/signin/")           
             
 
         if(not(len(pass1)>7 and not pass1.isalnum())):
-            # messages.add_message(request, messages.INFO, 'Password must belonger then 8 characters and should contain a symbol.')
+            messages.add_message(request, messages.INFO, 'Password must belonger then 8 characters and should contain a symbol.')
             return redirect("/signin/")
         
         if(not(pass1==pass2)):
-            # messages.add_message(request, messages.INFO, 'Both the password must be same.')
+            messages.add_message(request, messages.INFO, 'Both the password must be same.')
             return redirect("/signin/")
 
         else:
@@ -76,19 +76,19 @@ def Logindo(request):
 
         if user is not None:
             login(request,user)
-            # messages.add_message(request, messages.SUCCESS, 'LOGIN successfull!!')
+            messages.add_message(request, messages.SUCCESS, 'LOGIN successfull!!')
             return redirect("/")
 
         else:
-            # messages.add_message(request, messages.ERROR, 'Email or password is not valid. ')
+            messages.add_message(request, messages.ERROR, 'Email or password is not valid. ')
             return redirect("/login/")
     else:
-        # messages.add_message(request, messages.ERROR, 'Please Login.')
+        messages.add_message(request, messages.ERROR, 'Please Login.')
         return redirect("/login/")
     
 def logoutkaro(request):
     logout(request)
-    # messages.add_message(request, messages.SUCCESS, 'Logout successful')
+    messages.add_message(request, messages.SUCCESS, 'Logout successful')
     return redirect("/")
 
 
@@ -402,6 +402,7 @@ def searchaccessories(request):
 	data=mensboy.objects.filter(title=q).order_by('-id')
 	return render(request,'homepage/searchaccessories.html',{'data':data})
 
+# Searchbar for homepage
 # search bar code ends
 
 

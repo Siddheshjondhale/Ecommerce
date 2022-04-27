@@ -37,9 +37,33 @@ List
 
 <main>
     <div class="container">
+        
+
+
         <div class="row">
+            
                 <form method="POST" action="/logindo/" class="login">
                       {% csrf_token %}
+                                      {% comment %} error message started {% endcomment %}
+{% if messages %}
+<div class="mt-2">
+<ul class="messages list-unstyled">
+    {% for message in messages %}
+    <li {% if message.tags %}>
+
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong> {{ message }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{% endif %}
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endif %}
+{% comment %} error message ended {% endcomment %}
+
                     <h1>Login</h1>
                     <div class="mini-form" style="margin-top: 30px;">
                         <input type="text" name="email" required>
@@ -59,7 +83,9 @@ List
   </div>
                     
                 </form>
+        
         </div>
+
     </div>
 </main>
 
@@ -72,7 +98,6 @@ List
       <li class="list-inline-item"><a href="#">Support</a></li>
     </ul>
   </footer>
-
 
 
 
