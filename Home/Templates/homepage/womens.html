@@ -208,23 +208,23 @@ span.custom-ar{
               <div class="product-name">
                 <h1>{{i.title}}</h1>
                 <p class="price">{{i.price}}</p>
-                <p>Men's running shirt</p>
+                <p>Women's running shirt</p>
               </div>
             </div>
 			
-            <div class="product-option">
+            <div class="product-option ">
               <div class="product-size">
-                <h3>Sizes</h3>
-                <p>XS,S,M,L,XL,XXL</p>
+                <h3 class="mt-3">Sizes</h3>
+      1UK - 10UK
               </div>
-              <div class="product-color">
+              {% comment %} <div class="product-color">
                 <button class="btn btn-sm btn-dark" onclick="add_to_cart('{{i.id}}','{{i.title}}')">Add to Cart</button>
 					<!-- <ul>
 						<li>
 							{{i.percentage_sale}}
 						</li>
 					</ul> -->
-              </div>
+              </div> {% endcomment %}
 
             </div>
           </div>
@@ -245,31 +245,27 @@ span.custom-ar{
 
 <script>
 
-const add_to_cart =(id,name)=>{
+  const add_to_cart =(id,name)=>{
 
 
-  var cart = JSON.parse(localStorage.getItem("cart"))
-
-
- 
-  //id=id+50;
- 
-  if (cart) {
-    if (cart[id]) {
-      cart[id] = { name: name, value: cart[id].value + 1 };
-
+    var cart = JSON.parse(localStorage.getItem("cart"))
+    var getValue = document. getElementById('sizehai'). selectedOptions[0]. value;
+  
+    if (cart) {
+      if (cart[id]) {
+        cart[id] = { name: name, value: cart[id].value + 1,size:getValue };
+  
+      } else {
+        cart[id] = { name: name, value: 1,size:getValue};
+      }
     } else {
-      cart[id] = { name: name, value: 1 };
+      cart = { [id]: { name: name, value: 1,size:getValue } };
+  
     }
-  } else {
-    cart = { [id]: { name: name, value: 1 } };
-  }
-
-
-
-localStorage.setItem("cart",JSON.stringify(cart))
-
-
+  
+  localStorage.setItem("cart",JSON.stringify(cart))
+  
+  
 
 var value = JSON.parse(localStorage.getItem("cart"));
 

@@ -205,17 +205,17 @@ onclick="addHiddenVal()"
                 <div class="product-name">
                   <h1>{{i.title}}</h1>
                   <p class="price">{{i.price}}</p>
-                  <p>Men's running shirt</p>
+                  <p>Accessories</p>
                 </div>
               </div>
         
               <div class="product-option">
                 <div class="product-size">
-                  <h3>Sizes</h3>
-                  <p>XS,S,M,L,XL,XXL</p>
+                  <h3 class="mt-3">Sizes</h3>
+        1UK - 10UK
                 </div>
                 <div class="product-color">
-                  <button class="btn btn-sm btn-dark" onclick="add_to_cart('{{i.id}}','{{i.title}}')">Add to Cart</button>
+                  {% comment %} <button class="btn btn-sm btn-dark" onclick="add_to_cart('{{i.id}}','{{i.title}}')">Add to Cart</button> {% endcomment %}
             <!-- <ul>
               <li>
                 {{i.percentage_sale}}
