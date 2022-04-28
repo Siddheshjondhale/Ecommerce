@@ -36,11 +36,11 @@ List
 {% for i in data  %}
 {{i.email}}
 {{i.jsonCart}}
-{% for iw in i.jsonCart%}
+{% comment %} {% for iw in i.jsonCart%}
 
 <p>{{iw}}</p>
 
-{% endfor %}
+{% endfor %} {% endcomment %}
 
 <br>
 
