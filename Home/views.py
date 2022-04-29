@@ -429,6 +429,6 @@ def deliverydone(request):
     qe=request.user
     datasearched=Orderdone.objects.filter(email=qe)
     print(datasearched)
-  
+
     return render(request,'homepage/deliverydone.html',{'data':datasearched})
 # For delivery staff model ends

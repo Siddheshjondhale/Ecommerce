@@ -84,7 +84,7 @@ span.custom-ar{
 
    <li class="nav-item dropdown">
        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-         {{request.user.username}}
+         {{request.user.first_name}}
        </a>
        <ul class="dropdown-menu drop-custom" aria-labelledby="navbarDropdown">
          <li><a class="dropdown-item" href="/logout/">logout</a></li>
@@ -98,7 +98,7 @@ span.custom-ar{
             <input type="checkbox" id="show-services">
             <label for="show-services">Services</label>
             <ul class="mycss">
-              <li><a href="/signin">Sigin</a></li>
+              <li><a href="/signin">Register</a></li>
               <li><a href="/login">Login</a></li>
            
             </ul>
