@@ -70,7 +70,7 @@ span.custom-ar{
       <input type="checkbox" id="show-menu">
       <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
       <div class="content">
-      <div class="logo"><a href="/">NikeXPuma</a></div>
+      <div class="logo"><a href="/">JUSTDOIT</a></div>
         <ul class="links">
           <li><a href="/">Home</a></li>
           <li><a href="/mens">Mens</a></li>
@@ -110,13 +110,13 @@ span.custom-ar{
          
         </ul>
       </div>
-      <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
+      {% comment %} <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
       
       <form action="/search" class="search-box">
         <input type="text" name="q" placeholder="Type Something to Search..." required>
         <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
-      </form>
-	  
+      </form> {% endcomment %}
+	  <button class="btn btn-lg bg-white text-dark"><a href="/deliverydone" class="text-dark">Delivery Status</a></button>
 <!-- Modal -->
 <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog  modal-dialog-centered">
@@ -139,12 +139,12 @@ span.custom-ar{
 											type="submit"
 											href=""
 												
-												class="btn btn-success close_btn"
+												class="btn-lg btn-success close_btn"
 												
 											>
 												Checkout
 										</button></form>
-        <button type="button" class="btn btn-secondary close_btn" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn-lg btn-secondary close_btn" data-bs-dismiss="modal">Close</button>
         
       </div>
     </div>
@@ -159,6 +159,15 @@ span.custom-ar{
 
 <!-- add to cart algo logic starts here  -->
 <script>
+
+
+
+{% comment %} contactus  {% endcomment %}
+const contactus=()=>{
+  alert(" Any query Contact:- Thakur@tpoly.in")
+}
+{% comment %} contactus ended {% endcomment %}
+
 
   const addHiddenVal=()=>{
     var input = document.getElementById("card-hidden");

@@ -34,13 +34,14 @@ List
 <br>
   
 {% for i in data  %}
-{{i.email}}<br>
-{{i.jsonCart}}
-{% comment %} {% for iw in i.jsonCart%}
+{{i.email}}
+{% comment %} {{i.jsonCart}}
+ {% endcomment %}
 
-<p>{{iw}}</p>
 
-{% endfor %} {% endcomment %}
+
+
+ 
 
 <br>
 
@@ -48,7 +49,9 @@ UPI Payment : {{i.UPIHai}}
 <br>
 COD Payment : {{i.CODHai}}
 <br>
-Product Delieverd : {{i.productorder}}
+<b>Product Delieverd : {{i.productorder}}</b>
+<br>
+<b>Product Ordered : {{i.order_date}}</b>
 <br>
 
 
